@@ -71,3 +71,5 @@ end
 gem 'dotenv-rails'
 
 gem 'pg'
+
+gem 'devise'
