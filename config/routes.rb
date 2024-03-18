@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   devise_for :users
 
-  root to: redirect('/users/sign_in')
+  # Redirige a los usuarios a home/index después de iniciar sesión correctamente
+  authenticated :user do
+    root 'home#index', as: :authenticated_root
+  end
+
+  root to: redirect('/users/sign_in'), unless: -> { user_signed_in? }
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
