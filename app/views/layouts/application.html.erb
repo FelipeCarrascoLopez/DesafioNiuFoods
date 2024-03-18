@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>EstadoRestaurantes</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <!-- Common head content here -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield(:title) || "Default Title" %></title>
+  <!-- Common stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css' %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_pack_tag 'font_awesome', crossorigin: 'anonymous' %>
+</head>
+<body>
+  <%= yield %>
+  <%= javascript_pack_tag 'bootstrap', crossorigin: 'anonymous' %>
+</body>
 </html>

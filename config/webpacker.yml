@@ -1,5 +1,3 @@
-# Note: You must restart bin/webpack-dev-server for changes to take effect
-
 default: &default
   source_path: app/javascript
   source_entry_path: packs
@@ -46,6 +44,14 @@ default: &default
     - .gif
     - .jpeg
     - .jpg
+
+  packs:  
+    # Your other packs configurations...
+
+    font_awesome:
+      - app/javascript/packs/font_awesome.js
+    bootstrap:
+      - app/javascript/packs/bootstrap.js
 
 development:
   <<: *default
