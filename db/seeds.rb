@@ -1,9 +1,16 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+
+# Create two restaurant stores
+Store.create(name: "Restaurant 1")
+Store.create(name: "Restaurant 2")
+
+
+# Create devices for Store 1
+Store.find(Store.where(name: "Restaurant 1").take.id).devices.create(name: "Printer", type: "Printer")
+Store.find(Store.where(name: "Restaurant 1").take.id).devices.create(name: "Web Server", type: "Web Server")
+Store.find(Store.where(name: "Restaurant 1").take.id).devices.create(name: "Database Server", type: "Database Server")
+
+# Create devices for Store 2
+Store.find(Store.where(name: "Restaurant 2").take.id).devices.create(name: "Printer", type: "Printer")
+Store.find(Store.where(name: "Restaurant 2").take.id).devices.create(name: "Web Server", type: "Web Server")
+Store.find(Store.where(name: "Restaurant 2").take.id).devices.create(name: "Database Server", type: "Database Server")
