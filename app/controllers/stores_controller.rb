@@ -7,8 +7,11 @@ class StoresController < ApplicationController
   end
 
   # GET /stores/1 or /stores/1.json
-  def show
-  end
+    def show
+      @store = Store.find(params[:id])
+      @devices = @store.devices
+    end
+
 
   # GET /stores/new
   def new

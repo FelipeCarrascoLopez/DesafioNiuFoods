@@ -75,3 +75,5 @@ gem 'pg'
 gem 'devise'
 
 gem 'webpacker'
+
+gem 'byebug'

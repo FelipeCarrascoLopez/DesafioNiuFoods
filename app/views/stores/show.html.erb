@@ -1,10 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="row">
+                    <div class="col-12">
+                        <h1><%= @store.name %></h1>
 
-<%= render @store %>
-
-<div>
-  <%= link_to "Edit this store", edit_store_path(@store) %> |
-  <%= link_to "Back to stores", stores_path %>
-
-  <%= button_to "Destroy this store", @store, method: :delete %>
-</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @devices.each do |device| %>
+                                    <tr>
+                                        <td><%= device.name %></td>
+                                        <td><%= device.status %></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>

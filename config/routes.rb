@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :devices
-  resources :stores
+  resources :stores, only: [:show]
   get 'home/index'
 
   devise_for :users
