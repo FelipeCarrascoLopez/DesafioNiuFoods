@@ -1,6 +1,6 @@
 require 'net/http'
 
-class ThirtySecondsReportDataWorker
+class FortySecondsReportDataWorker
   include Sidekiq::Worker
 
   def perform

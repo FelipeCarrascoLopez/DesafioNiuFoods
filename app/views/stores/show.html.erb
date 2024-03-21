@@ -18,7 +18,7 @@
                                 <% @devices.each do |device| %>
                                     <tr>
                                         <td><%= device.name %></td>
-                                        <td><%= Time.now.in_time_zone("Santiago") %></td>
+                                        <td><%= formatted_santiago_time(Time.now) %></td>
                                         <td><%= device.status %></td>
                                     </tr>
                                 <% end %>

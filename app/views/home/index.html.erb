@@ -11,7 +11,7 @@
                             <div class="card bg-bs-primary-border-subtle text-dark mb-4">
                                 <div class="card-body">
                                     <h5>Store: <%= store.name %></h5>
-                                    <p>Last Updated: <%= Time.now.in_time_zone("Santiago") %></p>
+                                    <p>Last Updated: <%= formatted_santiago_time(Time.now) %></p>
                                     <% device_statuses = @devices.where(store_id: store.id).pluck(:status) %>
                                     <% status_class = device_statuses.include?("error") ? "text-danger" : (device_statuses.include?("warning") ? "text-warning" : "text-success") %>
                                     <p>Status: <span class="<%= status_class %>"><%= device_statuses.include?("error") ? "error" : (device_statuses.include?("warning") ? "warning" : "ok") %></span></p>

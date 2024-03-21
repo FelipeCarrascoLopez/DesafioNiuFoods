@@ -2,6 +2,8 @@
 require 'net/http'
 
 class DatosService
+  include TimeHelper
+
   def enviar_datos_al_servidor
     stores = Store.includes(:devices)
 
@@ -11,7 +13,7 @@ class DatosService
         devices: store.devices.map do |device|
           {
             device_name: device.name,
-            last_updated: Time.now.in_time_zone("Santiago"),
+            last_updated: formatted_santiago_time(Time.now),
             device_status: device.status
           }
         end

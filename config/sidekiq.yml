@@ -1,9 +1,9 @@
 :scheduler:
   :schedule:
-    thirty_seconds_report_data:
-      cron: '*/30 * * * * *'
-      class: ThirtySecondsReportDataWorker
+    forty_seconds_report_data:
+      cron: '*/40 * * * * *'
+      class: FortySecondsReportDataWorker
 
     update_device_status:
-      cron: '*/20 * * * * *'
+      cron: '*/30 * * * * *'
       class: DeviceStatusUpdateWorker
