@@ -12,21 +12,21 @@
   <% end %>
 
   <div>
-    <%= form.label :store_id, style: "display: block" %>
-    <%= form.text_field :store_id %>
+    <%= form.label :store_id, "Store:", style: "display: block" %>
+    <%= form.collection_select :store_id, Store.all, :id, :name, { prompt: "Select a store" }, { class: "form-control" } %>
   </div>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, "Name:", style: "display: block" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :type, style: "display: block" %>
-    <%= form.text_field :type %>
+    <%= form.label :device_type %>
+    <%= form.select :device_type, Device.device_types.keys.map { |t| [t.humanize, t] } %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Create", class: "btn btn-primary" %>
   </div>
 <% end %>

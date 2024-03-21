@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  layout 'application'
   before_action :set_store, only: %i[ show edit update destroy ]
 
   # GET /stores or /stores.json

@@ -3,23 +3,32 @@
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Dashboard</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+                <br>
+                <br>
                 <div class="row">
                     <% @stores.each do |store| %>
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
+                            <div class="card bg-bs-primary-border-subtle text-dark mb-4">
                                 <div class="card-body">
-                                    <%= store.name %>
+                                    <h5>Store: <%= store.name %></h5>
+                                    <p>Last Updated: <%= Time.now.in_time_zone("Santiago") %></p>
+                                    <% device_statuses = @devices.where(store_id: store.id).pluck(:status) %>
+                                    <% status_class = device_statuses.include?("error") ? "text-danger" : (device_statuses.include?("warning") ? "text-warning" : "text-success") %>
+                                    <p>Status: <span class="<%= status_class %>"><%= device_statuses.include?("error") ? "error" : (device_statuses.include?("warning") ? "warning" : "ok") %></span></p>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="<%= store_path(store) %>">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    <a class="small text-dark stretched-link" href="<%= store_path(store) %>">View Devices</a>
+                                    <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
                         </div>
                     <% end %>
+                </div>
+                <!-- Botón para agregar restaurante -->
+                <div class="row">
+                    <div class="col-12">
+                        <a href="<%= new_store_path %>" class="btn btn-primary">Add Restaurant</a>
+                    </div>
                 </div>
             </div>
         </main>

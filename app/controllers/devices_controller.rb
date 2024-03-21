@@ -63,8 +63,9 @@ class DevicesController < ApplicationController
       @device = Device.find(params[:id])
     end
 
+
     # Only allow a list of trusted parameters through.
     def device_params
-      params.require(:device).permit(:store_id, :name, :type, :status)
+      params.require(:device).permit(:store_id, :name, :status, :device_type)
     end
 end
