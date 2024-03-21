@@ -76,4 +76,6 @@
 
   gem 'byebug'
 
-  gem 'whenever', require: false
+  gem 'sidekiq'
+
+  gem 'sidekiq-scheduler'

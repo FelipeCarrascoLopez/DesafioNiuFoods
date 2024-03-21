@@ -1,0 +1,9 @@
+:scheduler:
+  :schedule:
+    thirty_seconds_report_data:
+      cron: '*/30 * * * * *'
+      class: ThirtySecondsReportDataWorker
+
+    update_device_status:
+      cron: '*/20 * * * * *'
+      class: DeviceStatusUpdateWorker
