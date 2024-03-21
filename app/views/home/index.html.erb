@@ -13,8 +13,26 @@
                                     <h5>Store: <%= store.name %></h5>
                                     <p>Last Updated: <%= formatted_santiago_time(Time.now) %></p>
                                     <% device_statuses = @devices.where(store_id: store.id).pluck(:status) %>
-                                    <% status_class = device_statuses.include?("error") ? "text-danger" : (device_statuses.include?("warning") ? "text-warning" : "text-success") %>
-                                    <p>Status: <span class="<%= status_class %>"><%= device_statuses.include?("error") ? "error" : (device_statuses.include?("warning") ? "warning" : "ok") %></span></p>
+                                    <% status_class = case
+                                        when device_statuses.all?("error")
+                                            "text-danger"
+                                        when device_statuses.any?("warning")
+                                            "text-warning"
+                                        when device_statuses.any? { |status| status != "ok" }
+                                            "text-warning"
+                                        else
+                                            "text-success"
+                                    end %>
+                                    <p>Status: <span class="<%= status_class %>">
+                                        <% case status_class %>
+                                            <% when "text-danger" %>
+                                                <%= "error" %>
+                                            <% when "text-warning" %>
+                                                <%= "warning" %>
+                                            <% when "text-success" %>
+                                                <%= "ok" %>
+                                        <% end %>
+                                    </span></p>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-dark stretched-link" href="<%= store_path(store) %>">View Devices</a>

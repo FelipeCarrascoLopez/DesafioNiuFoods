@@ -19,7 +19,15 @@
                                     <tr>
                                         <td><%= device.name %></td>
                                         <td><%= formatted_santiago_time(Time.now) %></td>
-                                        <td><%= device.status %></td>
+                                        <% status_class = case device.status
+                                            when "error"
+                                                "text-danger"
+                                            when "warning"
+                                                "text-warning"
+                                            else
+                                                "text-success"
+                                        end %>
+                                        <td class="<%= status_class %>"><%= device.status %></td>
                                     </tr>
                                 <% end %>
                             </tbody>
@@ -27,9 +35,8 @@
                     </div>
                 </div>
                 <div class="col-12">
-    <a href="<%= new_device_path %>" class="btn btn-primary">Agregar Dispositivo</a>
-</div>
-
+                    <a href="<%= new_device_path %>" class="btn btn-primary">Agregar Dispositivo</a>
+                </div>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
@@ -40,3 +47,4 @@
         </footer>
     </div>
 </body>
+z   
